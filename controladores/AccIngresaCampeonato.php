@@ -6,12 +6,18 @@ include ('../lib/constantes.php');
 if (isset($_POST["txtCodigo"])) {
     $codigo = $_POST["txtCodigo"];
 }
-//$codigo = $_POST["txtCodigo"];
-$nombre = $_POST["txtNombre"];
-$fechainicio=$_POST["txtFechaInicio"];
-$fechatermino=$_POST["txtFechaTermino"];
-$cantidadPartidos=$_POST["txtCantidadPartidos"];
-
+if (isset($_POST["txtNombre"])) {
+    $nombre = $_POST["txtNombre"];
+}
+if (isset($_POST["txtFechaInicio"])) {
+    $fechainicio=$_POST["txtFechaInicio"];
+}
+if (isset($_POST["txtFechaTermino"])) {
+    $fechatermino=$_POST["txtFechaTermino"];
+}
+if (isset($_POST["txtCantidadPartidos"])) {
+    $cantidadPartidos=$_POST["txtCantidadPartidos"];
+}
 $oCamp = new campeonato(null, $codigo, $nombre, $fechainicio, $fechatermino, $cantidadPartidos);
 
 $oCamp->InsertaDatos();

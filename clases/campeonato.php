@@ -101,5 +101,42 @@ class campeonato {
         }
         */
     }
+     function EliminarCampeonato(){
+        /*Verficamos la existencia*/
+        $db= new DBConnect();
+        $dblink=$db->conexion();
+        
+        if (!isset($dblink)){
+            return false;
+        }
+                /*update usuario
+                                 set nomarchivo=?,archivo=? , nombre=? , nomusu=?
+                                 where idusuario=?*/
+        
+        $PDOst=$dblink->prepare('delete from campeonato where codigo=?');
+        
+        $PDOst->execute(array($this->codigo));
 
+      /*  if ( $row=$PDOst->fetch(PDO::FETCH_OBJ)){
+            return true;
+        }
+        else{
+             return false;   
+        }
+        */
+    }
+    function ActualizaCampeonato(){
+        /*Verficamos la existencia*/
+        $db= new DBConnect();
+        $dblink=$db->conexion();
+        
+        if (!isset($dblink)){
+            return false;
+        }
+
+        $PDOst=$dblink->prepare('update campeonato SET nombre=?, fechainicio=?,fechatermino=?,cantidadpartidos=? WHERE codigo=?');
+        
+        $PDOst->execute(array($this->nombre, $this->fechainicio, $this->fechatermino, $this->cantidadpartidos, $this->codigo));//falta rellenar 
+
+    }
 }
