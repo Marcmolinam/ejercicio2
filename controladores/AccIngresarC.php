@@ -1,4 +1,7 @@
+<?php
+include ("../lib/constantes.php");
 
+?>
 <!DOCTYPE html>
 <!--
 To change this license header, choose License Headers in Project Properties.
@@ -11,33 +14,17 @@ and open the template in the editor.
         <title></title>
     </head>
     <body>
-        <form action="<?=URLBASE?>/controladores/AccActualizaDatosUsuario.php" method="POST">
-            <div>
-                <!-- 
-               DIV Id Camp
-                --> 
-                <br>
-                <div>
-                    <div>
-                        <label>Id Campeonato</label>
-
-                        <input type="text" name="txtIdCampeonato" placeholder="Ingrese Id">
-                    </div>
-
-                </div> 
+        <form action="<?=URLBASE?>controladores/AccIngresaCampeonato.php" method="POST" role="form" >
                 <!-- 
                 DIV CODIGO
                 --> 
                 <br>
                 <div>
                     <div>
-                        <label>codigo</label>
-
+                        <label>Codigo Campeonato</label>
                         <input type="text" name="txtCodigo" placeholder="Ingrese Codigo">
                     </div>
-
                 </div>  
-
                 <!-- 
                 DIV NOMBRE
                 --> 
@@ -45,10 +32,8 @@ and open the template in the editor.
                 <div>
                     <div>
                         <label>Nombre</label>
-
                         <input type="text" name="txtNombre" placeholder="Ingrese Nombre">
                     </div>
-
                 </div>
                 <!-- 
                 DIV Fecha INICIO
@@ -60,7 +45,6 @@ and open the template in the editor.
 
                         <input type="text" name="txtFechaInicio" placeholder="0000-00-00">
                     </div>
-
                 </div>
                 <!-- 
                 DIV Fecha TERMINO
@@ -69,10 +53,8 @@ and open the template in the editor.
                 <div>
                     <div>
                         <label>Fecha de Termino</label>
-
                         <input type="text" name="txtFechaTermino" placeholder="0000-00-00">
                     </div>
-
                 </div>
                 <!-- 
                 DIV Cantidad de Partidos
@@ -81,12 +63,10 @@ and open the template in the editor.
                 <div>
                     <div>
                         <label>Cantidad de partidos</label>
-
                         <input type="number" name="txtCantidadPartidos" placeholder="XX">
                     </div>
-
                 </div>
-            </div>
+                    <input type="submit" value="agregar" >
         </form>
     </body>
 </html>

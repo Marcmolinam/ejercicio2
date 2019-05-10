@@ -18,9 +18,8 @@ and open the template in the editor.
     <body>
         <div>
             <h1>Bienvenio</h1> 
-            <a class="btn btn-success" href="<?=URLBASE?>controladores/AccIngresaCampeonato.php">Ingresar Campeonato</a></div> 
         <div>
-            <a  class="btn btn-success" href="<?=URLBASE?>controladores/AccUsuario.php" >Listar Campeonatos</a>
+            <a  class="btn btn-success" href="<?=URLBASE?>controladores/AccIngresarC.php" >Ingresar Campeonato</a>
         </div> 
         
         

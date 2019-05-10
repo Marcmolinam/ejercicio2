@@ -76,7 +76,7 @@ class campeonato {
         $this->cantidadpartidos = $cantidadpartidos;
     }
 
-    function ActualizaDatos(){
+    function InsertaDatos(){
         /*Verficamos la existencia*/
         $db= new DBConnect();
         $dblink=$db->conexion();
@@ -88,10 +88,10 @@ class campeonato {
                                  set nomarchivo=?,archivo=? , nombre=? , nomusu=?
                                  where idusuario=?*/
         
-        $PDOst=$dblink->prepare('INSERT INTO campeonato (codigo, nombre, fechainicio,fechatermino,cantidadpartios)
-                                                 VALUES (?, ?, ?,?,?)');
+        $PDOst=$dblink->prepare('INSERT INTO campeonato (idcampeonato,codigo, nombre, fechainicio,fechatermino,cantidadpartidos)
+                                                 VALUES (?,?, ?, ?,?,?)');
         
-        $PDOst->execute(array($this->nomarchivo,$this->archivo,  $this->nombre, $this->nomusuario,$this->id));
+        $PDOst->execute(array($this->idcampeonato, $this->codigo,$this->nombre,$this->fechainicio,$this->fechatermino,$this->cantidadpartidos));
 
       /*  if ( $row=$PDOst->fetch(PDO::FETCH_OBJ)){
             return true;
