@@ -12,13 +12,14 @@
  * @author cetecom
  */
 class campeonato {
+
     private $idcampeonato;
     private $codigo;
     private $nombre;
     private $fechainicio;
     private $fechatermino;
     private $cantidadpartidos;
-    
+
     function __construct($idcampeonato, $codigo, $nombre, $fechainicio, $fechatermino, $cantidadpartidos) {
         $this->idcampeonato = $idcampeonato;
         $this->codigo = $codigo;
@@ -76,67 +77,85 @@ class campeonato {
         $this->cantidadpartidos = $cantidadpartidos;
     }
 
-    function InsertaDatos(){
-        /*Verficamos la existencia*/
-        $db= new DBConnect();
-        $dblink=$db->conexion();
-        
-        if (!isset($dblink)){
-            return false;
-        }
-                /*update usuario
-                                 set nomarchivo=?,archivo=? , nombre=? , nomusu=?
-                                 where idusuario=?*/
-        
-        $PDOst=$dblink->prepare('INSERT INTO campeonato (idcampeonato,codigo, nombre, fechainicio,fechatermino,cantidadpartidos)
-                                                 VALUES (?,?, ?, ?,?,?)');
-        
-        $PDOst->execute(array($this->idcampeonato, $this->codigo,$this->nombre,$this->fechainicio,$this->fechatermino,$this->cantidadpartidos));
+    function InsertaDatos() {
+        /* Verficamos la existencia */
+        $db = new DBConnect();
+        $dblink = $db->conexion();
 
-      /*  if ( $row=$PDOst->fetch(PDO::FETCH_OBJ)){
-            return true;
-        }
-        else{
-             return false;   
-        }
-        */
-    }
-     function EliminarCampeonato(){
-        /*Verficamos la existencia*/
-        $db= new DBConnect();
-        $dblink=$db->conexion();
-        
-        if (!isset($dblink)){
+        if (!isset($dblink)) {
             return false;
         }
-                /*update usuario
-                                 set nomarchivo=?,archivo=? , nombre=? , nomusu=?
-                                 where idusuario=?*/
-        
-        $PDOst=$dblink->prepare('delete from campeonato where codigo=?');
-        
+        /* update usuario
+          set nomarchivo=?,archivo=? , nombre=? , nomusu=?
+          where idusuario=? */
+
+        $PDOst = $dblink->prepare('INSERT INTO campeonato (idcampeonato,codigo, nombre, fechainicio,fechatermino,cantidadpartidos)
+                                                 VALUES (?,?, ?, ?,?,?)');
+
+        $PDOst->execute(array($this->idcampeonato, $this->codigo, $this->nombre, $this->fechainicio, $this->fechatermino, $this->cantidadpartidos));
+
+        /*  if ( $row=$PDOst->fetch(PDO::FETCH_OBJ)){
+          return true;
+          }
+          else{
+          return false;
+          }
+         */
+    }
+
+    function EliminarCampeonato() {
+        /* Verficamos la existencia */
+        $db = new DBConnect();
+        $dblink = $db->conexion();
+
+        if (!isset($dblink)) {
+            return false;
+        }
+        /* update usuario
+          set nomarchivo=?,archivo=? , nombre=? , nomusu=?
+          where idusuario=? */
+
+        $PDOst = $dblink->prepare('delete from campeonato where codigo=?');
+
         $PDOst->execute(array($this->codigo));
 
-      /*  if ( $row=$PDOst->fetch(PDO::FETCH_OBJ)){
-            return true;
-        }
-        else{
-             return false;   
-        }
-        */
+        /*  if ( $row=$PDOst->fetch(PDO::FETCH_OBJ)){
+          return true;
+          }
+          else{
+          return false;
+          }
+         */
     }
-    function ActualizaCampeonato(){
-        /*Verficamos la existencia*/
-        $db= new DBConnect();
-        $dblink=$db->conexion();
-        
-        if (!isset($dblink)){
+
+    function ListarCampeonatos() {
+        $db = new DBConnect();
+        $dblink = $db->conexion();
+
+        if (!isset($dblink)) {
             return false;
         }
-
-        $PDOst=$dblink->prepare('update campeonato SET nombre=?, fechainicio=?,fechatermino=?,cantidadpartidos=? WHERE codigo=?');
-        
-        $PDOst->execute(array($this->nombre, $this->fechainicio, $this->fechatermino, $this->cantidadpartidos, $this->codigo));//falta rellenar 
-
+        $stmt = $dblink->prepare("SELECT codigo, nombre, fechainicio, fechatermino,cantidadPartidos FROM campeonato");
+        $stmt->execute();
+// set the resulting array to associative
+        $result = $stmt->setFetchMode(PDO::FETCH_ASSOC);
+        foreach(new TableRows(new RecursiveArrayIterator($stmt->fetchAll())) as $k=>$v) {
+        echo $v;
     }
+    }
+
+}
+
+function ActualizaCampeonato() {
+    /* Verficamos la existencia */
+    $db = new DBConnect();
+    $dblink = $db->conexion();
+
+    if (!isset($dblink)) {
+        return false;
+    }
+
+    $PDOst = $dblink->prepare('update campeonato SET nombre=?, fechainicio=?,fechatermino=?,cantidadpartidos=? WHERE codigo=?');
+
+    $PDOst->execute(array($this->nombre, $this->fechainicio, $this->fechatermino, $this->cantidadpartidos, $this->codigo)); //falta rellenar 
 }

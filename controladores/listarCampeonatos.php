@@ -1,7 +1,6 @@
  <?php 
-include ("../clases/Campeonato.php");
-include ("../lib/db.php");
-include("../lib/constantes.php");
+include ("../lib/librerias.php");
+
 echo "<table style='border: solid 1px black;'>";
 echo "<tr><th>Codigo</th><th>Nombre</th><th>Fecha Inicio</th><th>Fecha Termino</th><th>Cantidad Partidos</th></tr>";
 class TableRows extends RecursiveIteratorIterator {
@@ -18,19 +17,8 @@ class TableRows extends RecursiveIteratorIterator {
         echo "</tr>" . "\n";
     }
 }
-$db= new DBConnect();
-        $dblink=$db->conexion();
-        
-        if (!isset($dblink)){
-            return false;
-        }
-        $stmt = $dblink->prepare("SELECT codigo, nombre, fechainicio, fechatermino,cantidadPartidos FROM campeonato");
-    $stmt->execute();
-    // set the resulting array to associative
-    $result = $stmt->setFetchMode(PDO::FETCH_ASSOC);
-    foreach(new TableRows(new RecursiveArrayIterator($stmt->fetchAll())) as $k=>$v) {
-        echo $v;
-    }
+$objCamp = new campeonato(null,null,null,null,null,null); 
+$objCamp->ListarCampeonatos();
 echo "</table>";
 ?> 
 
