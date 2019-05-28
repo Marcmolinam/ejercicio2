@@ -23,22 +23,20 @@ and open the template in the editor.
 
     </head>
     <body>
-        <table class="table table-stripped">
-            <thead>
+        <div class="container   ">
+            <table class="table table-bordered table-stripped">
                 <tr>
-                    <th>#</th>
-                    <th>Codigo Equipo</th>
-                    <th>Nombre del Equipo</th>
-
+                    <th style="text-align: center;">#</th>
+                    <th style="text-align: center;">Codigo Equipo</th>
+                    <th style="text-align: center;">Nombre del Equipo</th>
+                    <th style="text-align: center;" colspan="2">Accion</th>
                 </tr>
-            </thead>
-            <tbody>
                 <?php
                 $oEquip->ListarEquipos();
-               
                 ?>
-            </tbody>
-        </table>
+
+            </table>
+        </div>    
         <form id="formelimina" action="../lib/eliminarrecepcion.php" method="post">
             <input type="hidden" value="" name="rut_e" id="rut_e">
         </form>

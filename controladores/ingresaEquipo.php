@@ -22,3 +22,4 @@ try {
     echo $exc->getTraceAsString();
 }
 
+header("location:".URLBASE."Vistas/listadoEquipos.php");

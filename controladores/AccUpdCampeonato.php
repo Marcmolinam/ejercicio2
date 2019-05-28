@@ -1,8 +1,6 @@
 <?php
 
-include ('../clases/campeonato.php');
-include ('../lib/db.php');
-include ('../lib/constantes.php');
+include ("../lib/librerias.php");
 if (isset($_POST["txtCodigo"])) {
     $codigo = $_POST["txtCodigo"];
 }
