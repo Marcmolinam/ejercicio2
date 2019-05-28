@@ -1,5 +1,5 @@
 <?php
-
+include ("../lib/librerias.php");
 /* 
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -18,4 +18,4 @@ $nombreEquipo = $_POST["nombreEquipo"];
 
 $oEqui = new equipos($idEquipo,$codigoEquipo,$nombreEquipo);
 
-$oEqui->InsertaDatos();
+$oEqui->InsertaEquipo();

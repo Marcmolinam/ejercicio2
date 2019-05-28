@@ -7,7 +7,7 @@
  */
 
 session_start();
-define("URLBASE",'http://localhost/ejercicio2/');
+define("URLBASE",'http://localhost:80/ejercicio2/');
 define("DIRBASE",'C:/xampp/htdocs/ejercicio2');
 /*
  * Parametros DB

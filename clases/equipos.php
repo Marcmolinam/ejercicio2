@@ -12,15 +12,15 @@
  * @author Pedro Navarro
  */
 class equipos {
+
     private $idequipo;
     private $codigo;
     private $nombre;
-    
+
     function __construct($idequipo, $codigo, $nombre) {
         $this->idequipo = $idequipo;
         $this->codigo = $codigo;
         $this->nombre = $nombre;
-        
     }
 
     function getIdequipo() {
@@ -47,7 +47,7 @@ class equipos {
         $this->nombre = $nombre;
     }
 
-function InsertaDatos() {
+    function InsertaEquipo() {
         /* Verficamos la existencia */
         $db = new DBConnect();
         $dblink = $db->conexion();
@@ -55,13 +55,54 @@ function InsertaDatos() {
         if (!isset($dblink)) {
             return false;
         }
-        
+
 
         $PDOst = $dblink->prepare('INSERT INTO equipo (idequipo, codigo, nombre)
                                                  VALUES (?,?,?)');
 
         $PDOst->execute(array($this->idequipo, $this->codigo, $this->nombre));
-
-       
     }
+
+    function EliminarEquipo() {
+
+        $db = new DBConnect();
+        $dblink = $db->conexion();
+
+        if (!isset($dblink)) {
+            return false;
+        }
+
+        $PDOst = $dblink->prepare('delete from equipo where idequipo=?');
+
+        $PDOst->execute(array($this->idequipo));
+    }
+
+    function ListarEquipos() {
+        $db = new DBConnect();
+        $dblink = $db->conexion();
+
+        if (!isset($dblink)) {
+            return false;
+        }
+        $stmt = $dblink->prepare("SELECT idequipo, codigo, nombre FROM equipo");
+        $stmt->execute();
+        $result = $stmt->setFetchMode(PDO::FETCH_ASSOC);
+        foreach (new TableRows(new RecursiveArrayIterator($stmt->fetchAll())) as $k => $v) {
+            echo $v;
+        }
+    }
+
+    function ActualizaCampeonato() {
+        $db = new DBConnect();
+        $dblink = $db->conexion();
+
+        if (!isset($dblink)) {
+            return false;
+        }
+
+        $PDOst = $dblink->prepare('update equipo SET nombre=?, codigo=?WHERE idequipo=?');
+
+        $PDOst->execute(array($this->nombre, $this->codigo, $this->idequipo));
+    }
+
 }
