@@ -24,7 +24,7 @@ and open the template in the editor.
             </div> 
             
             <div>
-                <a  class="btn btn-success btn-lg" href="<?= URLBASE ?>controladores/listarEquipos.php" >Listado de Equipos</a>
+                <a  class="btn btn-success btn-lg" href="<?= URLBASE ?>Vistass/listadoEquipos.php" >Listado de Equipos</a>
             </div> 
 
 

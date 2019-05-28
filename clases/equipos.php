@@ -60,7 +60,7 @@ class equipos {
         $PDOst = $dblink->prepare('INSERT INTO equipo ( codigo, nombre)
                                                  VALUES (?,?)');
 
-        $PDOst->execute(array($this->idequipo, $this->codigo, $this->nombre));
+        $PDOst->execute(array($this->codigo, $this->nombre));
     }
 
     function EliminarEquipo() {
@@ -86,9 +86,18 @@ class equipos {
         }
         $stmt = $dblink->prepare("SELECT idequipo, codigo, nombre FROM equipo");
         $stmt->execute();
-        $result = $stmt->setFetchMode(PDO::FETCH_ASSOC);
-        foreach (new TableRows(new RecursiveArrayIterator($stmt->fetchAll())) as $k => $v) {
-            echo $v;
+        if ($stmt->rowCount() > 0) {
+            while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+                ?>
+                <tr>
+                    <td><?php if (isset($row["idequipo"])){ print($row["idequipo"]);} ?></td>
+                    <td><?php if (isset($row["codigo"])){ print($row["codigo"]);} ?></td>
+                    <td><?php if (isset($row["nombre"])){ print($row["nombre"]);} ?></td>
+                </tr>
+
+                <?php
+
+            }
         }
     }
 

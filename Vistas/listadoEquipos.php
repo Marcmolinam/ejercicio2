@@ -1,5 +1,10 @@
 <?php
 include ("../lib/librerias.php");
+if (isset($_SESSION["oEquipos"])) {
+    $oEquip = $oEquipos;
+} else {
+    $oEquip = new equipos(null, null, null);
+}
 ?>
 <!DOCTYPE html>
 <!--
@@ -29,18 +34,8 @@ and open the template in the editor.
             </thead>
             <tbody>
                 <?php
-                if (is_array($arrEquipos)) {
-                    foreach ($arrEquipos as $key => $oEquipos) {
-                        ?>
-                        <tr>
-                            <td><?= $oEquipos->getIdequipo(); ?></td>
-                            <td><?= $oEquipos->getCodigo(); ?></td>
-                            <td><?= $oEquipos->getNombre(); ?></td>
-                            <td><input type="button" id="eliminarVacacion" value="Eliminar" onclick="JavaScript:Feliminar(<?= $oEquipos->getIdEquipo(); ?>);" ><input type="button" id="modificarVacacion" value="Editar"></td>
-                        </tr>
-                        <?php
-                    }
-                }
+                $oEquip->ListarEquipos();
+               
                 ?>
             </tbody>
         </table>

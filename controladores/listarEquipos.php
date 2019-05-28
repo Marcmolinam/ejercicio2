@@ -1,16 +1,14 @@
 <?php
 include ("../lib/librerias.php");
-$contador=0;
+
+$cont=0;
 $oEquipos = new equipos(null,null,null); 
-if (isset($_SESSION["arrEquipos"])) {
-    $arrEquipos = $_SESSION["arrEquipos"];
-    $contador++;
+if (!isset($arrayEquipos)) {
+    $arrayEquipos=array($oEquipos->ListarEquipos());
+    $cont++;
 }
 
-$arrEquipos[] = $oEquipos->ListarEquipos();
-$_SESSION["$aEquipos"] = $oEquipos;
-
-
-if ($contador >= 1) {
+$_SESSION["aEquipos"]= $arrayEquipos;
+if ($cont >= 1) {
     header("location:".URLBASE."Vistas/listadoEquipos.php");
 }
