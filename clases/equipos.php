@@ -100,7 +100,7 @@ class equipos {
                     print($row["nombre"]);
                 } ?></td>
                     <td><a type="button" id="eliminarEquipo" class="btn-primary" href="<?=URLBASE?>controladores/eliminarEquipo.php?idequipo=<?php echo $row["idequipo"];?>">Eliminar</a></td>
-                    <td><a type="button" id="modificarEquipo" class="btn-primary" href="<?=URLBASE?>controladores/modificarEquipo.php?idequipo=<?php echo $row["idequipo"];?>">Modificar</a></td>
+                    <td><a type="button" id="modificarEquipo" class="btn-primary" href="<?=URLBASE?>Vistas/modificarEquipo.php?idequipo=<?php echo $row["idequipo"];?>">Modificar</a></td>
 
                 </tr>
 
@@ -109,7 +109,7 @@ class equipos {
         }
     }
 
-    function ActualizaCampeonato() {
+    function ActualizaEquipo() {
         $db = new DBConnect();
         $dblink = $db->conexion();
 
