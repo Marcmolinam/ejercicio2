@@ -20,10 +20,11 @@ and open the template in the editor.
         <div>
             <h1>Bienvenio</h1> 
             <div>
-                <a  class="btn btn-success btn-lg" href="<?= URLBASE ?>controladores/AccIngresarC.php" >Ingresar Campeonato</a>
+                <a  class="btn btn-success btn-lg" href="<?= URLBASE ?>Vistas/MantenedorCampeonato.php" >Ingresar Campeonato</a>
             </div> 
+            
             <div>
-                <a  class="btn btn-success btn-lg" href="<?= URLBASE ?>controladores/AccEquipos.php" >Registrar Equipo</a>
+                <a  class="btn btn-success btn-lg" href="<?= URLBASE ?>Vistas/listadoEquipos.php" >Listado de Equipos</a>
             </div> 
 
 
