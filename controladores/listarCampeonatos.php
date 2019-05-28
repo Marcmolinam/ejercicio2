@@ -22,3 +22,5 @@ $objCamp->ListarCampeonatos();
 echo "</table>";
 ?> 
 
+<a href="../index.php">Volver al Inicio</a>
+

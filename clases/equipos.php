@@ -57,8 +57,8 @@ class equipos {
         }
 
 
-        $PDOst = $dblink->prepare('INSERT INTO equipo (idequipo, codigo, nombre)
-                                                 VALUES (?,?,?)');
+        $PDOst = $dblink->prepare('INSERT INTO equipo ( codigo, nombre)
+                                                 VALUES (?,?)');
 
         $PDOst->execute(array($this->idequipo, $this->codigo, $this->nombre));
     }

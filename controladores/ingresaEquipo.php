@@ -6,7 +6,6 @@ include ("../lib/librerias.php");
  * and open the template in the editor.
  */
 
-$idEquipo = $_POST["idEquipo"];
 
 $codigoEquipo = $_POST["codigoEquipo"];
 
@@ -16,6 +15,10 @@ $nombreEquipo = $_POST["nombreEquipo"];
 
 
 
-$oEqui = new equipos($idEquipo,$codigoEquipo,$nombreEquipo);
+$oEqui = new equipos("",$codigoEquipo,$nombreEquipo);
+try {
+    $oEqui->InsertaEquipo();
+} catch (Exception $exc) {
+    echo $exc->getTraceAsString();
+}
 
-$oEqui->InsertaEquipo();

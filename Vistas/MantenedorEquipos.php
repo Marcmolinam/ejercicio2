@@ -22,9 +22,7 @@ and open the template in the editor.
 
             <div class="form-group">
                 <h1>INGRESO DE EQUIPOS</h1>
-                <label >Id Equipo</label>
-                <input type="text" class="form-control" id="idEquipo" name="idEquipo" placeholder="Ingresar Codigo Campeonato">
-            </div>
+            </div
             <div class="form-group">
                 <label>Codigo</label>
                 <input type="text" class="form-control" id="codigoEquipo" name="codigoEquipo" placeholder="Ingrese Codigo">
@@ -34,7 +32,7 @@ and open the template in the editor.
                 <input type="text" class="form-control" id="nombreEquipo" name="nombreEquipo" placeholder="Ingrese Nombre Equipo">
             </div>
             <div>
-                <input type="submit" class="btn btn-primary" value="Registrar Equipo" formaction="<?=URLBASE?>controladores/ingresaEquipo.php">    
+                <input type="submit" class="btn btn-primary" value="Registrar Equipo" formaction="<?= URLBASE ?>controladores/ingresaEquipo.php">    
             </div>
         </form>
     </body>

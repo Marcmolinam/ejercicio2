@@ -1,3 +1,6 @@
+<?php
+include ("../lib/librerias.php");
+?>
 <!DOCTYPE html>
 <!--
 To change this license header, choose License Headers in Project Properties.
@@ -19,32 +22,23 @@ and open the template in the editor.
             <thead>
                 <tr>
                     <th>#</th>
-                    <th>Rut</th>
-                    <th>Nombre</th>
-                    <th>Cargo</th>
-                    <th>Fecha Inicio</th>
-                    <th>Fecha Termino</th>
-                    <th>Dias totales</th>
-                    <th>Comentario</th>
+                    <th>Codigo Equipo</th>
+                    <th>Nombre del Equipo</th>
 
                 </tr>
             </thead>
             <tbody>
                 <?php
-                if (is_array($arrVacaciones)) {
-                    foreach ($arrVacaciones as $key => $oVacacion) {
+                if (is_array($arrEquipos)) {
+                    foreach ($arrEquipos as $key => $oEquipos) {
                         ?>
                         <tr>
-                            <td><?= $key + 1; ?></td>
-                            <td><?= $oVacacion->getRut(); ?></td>
-                            <td><?= $oVacacion->getNombre(); ?></td>
-                            <td><?= $oVacacion->getCargo(); ?></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td><input type="button" id="eliminarVacacion" value="Eliminar" onclick="JavaScript:Feliminar(<?= $oVacacion->getRut(); ?>);" ><input type="button" id="modificarVacacion" value="Editar"></td>
+                            <td><?= $oEquipos->getIdequipo(); ?></td>
+                            <td><?= $oEquipos->getCodigo(); ?></td>
+                            <td><?= $oEquipos->getNombre(); ?></td>
+                            <td><input type="button" id="eliminarVacacion" value="Eliminar" onclick="JavaScript:Feliminar(<?= $oEquipos->getIdEquipo(); ?>);" ><input type="button" id="modificarVacacion" value="Editar"></td>
                         </tr>
-                    <?php
+                        <?php
                     }
                 }
                 ?>
@@ -55,7 +49,7 @@ and open the template in the editor.
         </form>
 
         <div>
-            <a  class="btn btn-success btn-lg" href="<?= URLBASE ?>controladores/AccEquipos.php" >Registrar Equipo</a>
+            <a  class="btn btn-success btn-lg" href="<?= URLBASE ?>Vistas/MantenedorEquipos.php" >Registrar Equipo</a>
         </div>
     </body>
 </html>
